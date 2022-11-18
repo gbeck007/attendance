@@ -1,3 +1,10 @@
+<?php 
+//This includes the session file. This file contains code that starts/resumes a session
+// By having it in the header file, it will be included on every page, allowing session capability to be used on every page across the website
+include_once 'includes/session.php'
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,8 +18,9 @@
     <title>Attendance - <?php echo $title ?></title> 
 </head>
   <body>
-    <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
     <a class="navbar-brand" href="index.php">IT Conference</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +31,45 @@
         <a class="nav-item nav-link active" aria-current="page" href="index.php">Home <span class="sr-only">current</span></a>
         <a class="nav-item nav-link" href="viewrecords.php">View Attendees</a>
       </div>
+
+
+
+<!--       
+      <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link active" aria-current="page" href="index.php">Home <span class="sr-only">current</span></a>
+        <a class="nav-item nav-link" href="viewrecords.php">View Attendees</a>
+      </div> -->
+
+
+
+
+      <div class="navbar-nav ml-auto">
+
+<?php 
+    if(!isset($_SESSION['userid'])){
+?>
+
+<a class="nav-item nav-link" href="login.php">Login <span class="sr-only"></span></a>
+<?php } else { ?>
+
+  <a class= "nav-item nav-link active" href="#"> <span>Hello <?php echo $_SESSION['username']?>!</span> <a>
+            
+            <a class="nav- item nav-link" href="logout.php">Logout </a>
+      
+   
+           <?php } ?> 
+
+      </div>
+
+
+
+
+
     </div>
   </div>
 </nav>
+
+    <div class="container">
+   
 <br/>
 <br/>

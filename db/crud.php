@@ -10,11 +10,10 @@
         }
 
         //function to insert a new record into the attendee database
-        public function insertAttendees($fname, $lname, $dob, $email,$phone,$specialty){
+        public function insertAttendees($fname, $lname, $dob, $email,$phone,$specialty, $avatar_path){
             try {
                 // define sql statement to be executed
-                $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,speciality_id)
-                 VALUES (:fname,:lname,:dob,:email,:contact,:specialty)";
+                $sql = "INSERT INTO attendee (firstname,lastname,dateofbirth,emailaddress,contactnumber,speciality_id,avatar_path) VALUES (:fname,:lname,:dob,:email,:contact,:specialty,:avatar_path)";
                 //prepare the sql statement for execution
                 $stmt = $this->db->prepare($sql);
                 // bind all placeholders to the actual values
@@ -25,6 +24,7 @@
                 $stmt->bindparam(':email',$email); //was email
                 $stmt->bindparam(':contact',$phone); //was contact
                 $stmt->bindparam(':specialty',$specialty);
+                $stmt->bindparam(':avatar_path',$avatar_path);
                 // execute statement
                 $stmt->execute();
                 return true;
@@ -115,6 +115,26 @@
         
         }
 
+        }
+
+
+
+
+        public function getSpecialtyById($id)
+        {
+    
+            try {
+                $sql = "SELECT * FROM `specialties` where specialty_id = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindparam(':id', $id);
+                $stmt->execute();
+    
+                $result = $stmt->fetch();
+                return $result;
+            } catch (PDOException $e) {
+                echo $e->getMessage(); 
+                return false;
+            }
         }
 
     }

@@ -1,6 +1,7 @@
 <?php 
      $title = 'view record'; 
      require_once 'includes/header.php';
+     require_once 'includes/auth_check.php';
      require_once 'db/conn.php';
      
      // Get attendee by id
@@ -33,6 +34,9 @@
 
      </div>
   </div> -->
+
+
+  <img src="<?php echo empty ($result['avatar_path']) ? "uploads/blank.png" : $result['avatar_path'] ; ?>" class="rounded-circle" style="width: 25%; height: 25%"/>
 
   <div class="card" style="width: 18rem;">
        <img src="..." class="card-img-top" alt="...">
