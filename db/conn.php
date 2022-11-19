@@ -8,7 +8,8 @@ $charset = "utf8mb4";
 
 //Hosting
 $host = 'applied-web.mysql.database.azure.com';
-$db = 'glassford_beckfordattendance_db';
+//$db = 'glassford_beckfordattendance_db';
+$db = 'gbeckford';
 $user = 'appliedweb_user@applied-web';
 $pass = 'P@ssword1';
 $charset = 'utf8mb4';
